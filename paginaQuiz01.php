@@ -25,35 +25,34 @@ if (isset($_POST['usuario'])) {
     $_SESSION["usuario"] = $_POST['usuario'];
     $_SESSION["contador"] = 1;
     $_SESSION["puntos"] = 0;
-}
-
-$_SESSION["array_paises"] = $paises_mundo;
-
- $pais_random = array_rand($paises_mundo); // cogo el pais random del array asociativo
- $_SESSION["pais_random"] = $pais_random; // lo guardo en un sesion start para que se recuerde
-
-if (!isset($_SESSION["pais_random"])) {
     $_SESSION["pais_random"] = array_rand($paises_mundo);
 }
 
-$pais_random = $_SESSION["pais_random"];
+if($_SESSION["contador"] >= 5) {
+    header("Location: finalQuizBanderas.php");
+    exit();
+}
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pais'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pais'])) {
     $pais_elegido = $_POST['pais'];
-    
-    
-    if($pais_elegido == $pais_random) {
+
+    $pais_correcto = $_SESSION["pais_random"];
+
+    if ($pais_elegido == $pais_correcto) {
         $_SESSION["puntos"] += 10;
     } else {
         $_SESSION["puntos"] -= 5;
     }
 
+    $_SESSION["contador"] += 1;
+
+    $_SESSION["pais_random"] = array_rand($paises_mundo);
 }
 
-
-
-
+$pais_actual_pantalla = $_SESSION["pais_random"];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -73,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pais'])) {
         </div>
 
         <h1 style="text-align: center; color:rgb(206, 203, 207)">Que bandera es de este pais:</h1>
-        <h1 style="text-align: center; color:orange" class="pais"> <?php echo $pais_random?></h1>
+        <h1 style="text-align: center; color:orange" class="pais"> <?php echo $pais_actual_pantalla?></h1>
 
         <form action="" method="POST">
 
