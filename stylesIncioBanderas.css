@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "quiz";
+    src: url("fonts/Coolvetica\ Rg\ It.otf");
+}
+
+body {
+    height: 100vh;
+    font-family: "quiz";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: rgb(23, 23, 23);
+}
+
+.container {
+    background-color: rgba(150, 150, 150, 0.4);
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 0 20px #6d6a6a;
+    border-radius: 10px;
+    color: rgb(206, 203, 207);
+    border: 3px solid rgb(189, 189, 189);
+}
+
+.container h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.container p {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.container label {
+    font-size: 1.2rem;
+}
+
+.input-form {
+    width: 100%;
+    box-sizing: border-box;
+    border: solid rgb(193, 189, 189) 1px;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0 15px 0;
+}
+
+.input-form::placeholder {
+    font-family: "quiz";
+    font-size: 1.3rem;
+}
+
+.container button {
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: solid rgb(193, 189, 189) 1px;
+    border-radius: 5px;
+    transition: .4s ease-in-out;
+    cursor: pointer;
+    font-family: "quiz";
+    font-size: 1.4rem;
+}
+
+.container button:hover {
+    background-color: #2d2d2d;
+    color: white;
+    scale: 1.05;
+}

@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: "quiz";
+    src: url("fonts/Coolvetica\ Rg\ It.otf");
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: "quiz"; 
+    background-color: rgb(23, 23, 23);
+}
+
+.contenedor-banderas {
+    background-color: rgba(150, 150, 150, 0.4);
+    padding: 30px;
+    box-shadow: 0 0 20px #6d6a6a;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 500px;
+
+}
+
+.cabecera {
+    background-color: rgba(150, 150, 150, 0.4);
+    margin: 20px 0 20px 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 30px;
+    color: rgb(206, 203, 207);
+    box-shadow: 0 0 20px #b9b6b6;
+
+} 
+
+.plantilla-banderas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+.pais {
+    margin-bottom: 30px;
+}
+
+.boton-pais {
+    border: none;
+    background: white;
+    cursor: pointer;
+    padding: 20px;
+}
