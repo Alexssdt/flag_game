@@ -1,8 +1,6 @@
 <?php
 session_start();
-$_SESSION["usuario"] = $_POST['usuario'];
-$_SESSION["contador"] = 1;
-$_SESSION["puntos"] = 0;
+
 
 $paises_mundo = [
     "España" => "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ea-1f1e6.svg",
@@ -23,14 +21,26 @@ $paises_mundo = [
     "Estados Unidos" => "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1f2.svg",
 ];
 
+if (isset($_POST['usuario'])) {
+    $_SESSION["usuario"] = $_POST['usuario'];
+    $_SESSION["contador"] = 1;
+    $_SESSION["puntos"] = 0;
+}
+
 $_SESSION["array_paises"] = $paises_mundo;
 
-$pais_random = array_rand($paises_mundo);
-$_SESSION["pais_random"] = $pais_random;
+ $pais_random = array_rand($paises_mundo); // cogo el pais random del array asociativo
+ $_SESSION["pais_random"] = $pais_random; // lo guardo en un sesion start para que se recuerde
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SERVER)) {
+if (!isset($_SESSION["pais_random"])) {
+    $_SESSION["pais_random"] = array_rand($paises_mundo);
+}
+
+$pais_random = $_SESSION["pais_random"];
+
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['pais'])) {
     $pais_elegido = $_POST['pais'];
-
+    
     
     if($pais_elegido == $pais_random) {
         $_SESSION["puntos"] += 10;
@@ -39,6 +49,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SERVER)) {
     }
 
 }
+
+
 
 
 ?>
